@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="TestView.Controls.FrameViewModel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:TestViewModel;assembly=TestViewModel"
+             xmlns:c="clr-namespace:TestView.Controls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:TestView.Behaviors"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vm:FrameViewModel}"
+             d:DesignHeight="800" d:DesignWidth="600">
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <GroupBox Header="Top Left" HorizontalAlignment="Left" >
+                <c:LocationView DataContext="{Binding Quadrangle.TopLeft}"/>
+            </GroupBox>
+            <GroupBox Header="Top Right" HorizontalAlignment="Left" >
+                <c:LocationView DataContext="{Binding Quadrangle.TopRight}"/>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <GroupBox Header="Bottom Left" HorizontalAlignment="Left" >
+                <c:LocationView DataContext="{Binding Quadrangle.BottomLeft}"/>
+            </GroupBox>
+            <GroupBox Header="Bottom Right" HorizontalAlignment="Left" >
+                <c:LocationView DataContext="{Binding Quadrangle.BottomRight}"/>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" DataContext="{Binding SaveFileContainer}">
+            <Button Width="150" Height="30" Content="Сохранить фрейм...">
+                <i:Interaction.Behaviors>
+                    <behaviors:SaveFileBehavior Command="{Binding SaveFileCommand}"/>
+                </i:Interaction.Behaviors>
+            </Button>
+        </StackPanel>
+        <c:DrawListView HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    </StackPanel>
+</UserControl>

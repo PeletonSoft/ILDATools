@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="TestView.Controls.LocationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:outline="clr-namespace:TestViewModel.Outline;assembly=TestViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:TestView.Behaviors"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance outline:LocationViewModel}"
+             d:DesignHeight="30" d:DesignWidth="300">
+    <StackPanel Orientation="Horizontal">
+        <Label Width="50" HorizontalContentAlignment="Center" Content="X"/>
+        <TextBox Width="60" Name="X" VerticalContentAlignment="Center"
+                 Text="{Binding X, Mode=TwoWay, UpdateSourceTrigger=LostFocus}">
+            <i:Interaction.Behaviors>
+                <behaviors:SelectAllTextOnFocusBehavior/>
+                <behaviors:SelectAllTextOnPressEnterBehavior/>
+                <behaviors:UpdatePropertyOnEnterPressBehavior
+                    Property="TextBox.Text" Element="{Binding ElementName=X}"/>
+
+            </i:Interaction.Behaviors>
+        </TextBox>
+        <Label Width="50" HorizontalContentAlignment="Center" Content="Y"/>
+        <TextBox Width="60" Name="Y" VerticalContentAlignment="Center"
+                 Text="{Binding Y, Mode=TwoWay, UpdateSourceTrigger=LostFocus}">
+            <i:Interaction.Behaviors>
+                <behaviors:SelectAllTextOnFocusBehavior/>
+                <behaviors:SelectAllTextOnPressEnterBehavior/>
+                <behaviors:UpdatePropertyOnEnterPressBehavior
+                    Property="TextBox.Text" Element="{Binding ElementName=Y}"/>
+
+            </i:Interaction.Behaviors>
+        </TextBox>
+    </StackPanel>
+</UserControl>

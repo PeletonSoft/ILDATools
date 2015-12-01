@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="TestView.Controls.DrawListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:TestViewModel;assembly=TestViewModel"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vm:FrameViewModel}"
+             d:DesignHeight="500" d:DesignWidth="500">
+    <StackPanel Orientation="Vertical">
+        <StackPanel.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/TestView;component/Skins/DrawViewSkin.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </StackPanel.Resources>
+        <ListBox Background="{x:Null}" Name="ListBox"
+                     ItemsSource="{Binding Elements}"
+                     Width="500" Height="500">
+            
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                    <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                    <Setter Property="VerticalContentAlignment" Value="Top" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ContentPresenter Content="{Binding}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+        <StackPanel Orientation="Horizontal" Height="40" 
+                    DataContext="{Binding SelectedItem, ElementName=ListBox}">
+            <Label Width="40" Content="X0"/>
+            <Label Width="80" Content="{Binding X}" ContentStringFormat="{}{0:N2}"/>
+            <Label Width="50" Content="Y0"/>
+            <Label Width="80" Content="{Binding Y}" ContentStringFormat="{}{0:N2}"/>
+            <Label Width="40" Content="X"/>
+            <Label Width="80" Content="{Binding Line.Finish.X}" ContentStringFormat="{}{0:N2}"/>
+            <Label Width="40" Content="Y"/>
+            <Label Width="80" Content="{Binding Line.Finish.Y}" ContentStringFormat="{}{0:N2}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="TestView.Controls.OpenFileContainerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:testViewModel="clr-namespace:TestViewModel;assembly=TestViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:TestView.Behaviors"
+             xmlns:fileContainer="clr-namespace:TestViewModel.FileContainer;assembly=TestViewModel"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance fileContainer:OpenFileContainerViewModel}"
+             d:DesignHeight="30" d:DesignWidth="300">
+    <StackPanel Orientation="Horizontal" Height="30">
+        <Button Width="120" Content="Открыть файл...">
+            <i:Interaction.Behaviors>
+                <behaviors:OpenFileBehavior Command="{Binding OpenFileCommand}"/>
+            </i:Interaction.Behaviors>
+        </Button>
+        <Label Content="{Binding FileName}"/>
+    </StackPanel>
+</UserControl>

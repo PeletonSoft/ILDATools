@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:source="clr-namespace:TestViewModel.Source;assembly=TestViewModel"
+                    xmlns:controls="clr-namespace:TestView.Controls">
+    
+    <DataTemplate DataType="{x:Type source:FrameSourceViewModel}">
+        <controls:FrameSourceView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type source:MultiFrameSourceViewModel}">
+        <controls:MultiFrameSourceView/>
+    </DataTemplate>
+
+</ResourceDictionary>
