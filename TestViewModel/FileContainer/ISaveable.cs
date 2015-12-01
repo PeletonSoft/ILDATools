@@ -1,6 +1,6 @@
 namespace TestViewModel.FileContainer
 {
-    public interface ISavable
+    public interface ISaveable
     {
         void SaveFile(string fileName);
     }

@@ -47,7 +47,7 @@
     <Compile Include="Geomentry\LineViewModel.cs" />
     <Compile Include="Geomentry\PointViewModel.cs" />
     <Compile Include="IHostTransformation.cs" />
-    <Compile Include="FileContainer\ISavable.cs" />
+    <Compile Include="FileContainer\ISaveable.cs" />
     <Compile Include="FileContainer\SaveFileContainerViewModel.cs" />
     <Compile Include="FileContainer\OpenFileContainerViewModel.cs" />
     <Compile Include="Outline\LocationViewModel.cs" />

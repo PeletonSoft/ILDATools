@@ -32,9 +32,9 @@ namespace TestViewModel.FileContainer
 
         public string Filter { get; set; }
         public string DefaultExt { get; set; }
-        public SaveFileContainerViewModel(ISavable savable, Type factoryType)
+        public SaveFileContainerViewModel(ISaveable saveable, Type factoryType)
         {
-            Savable = savable;
+            Saveable = saveable;
             SaveFileCommand = new RelayCommand(SaveFile);
 
             var attrs = Attribute.GetCustomAttributes(factoryType);
@@ -49,7 +49,7 @@ namespace TestViewModel.FileContainer
             }
         }
 
-        public ISavable Savable { get; private set; }
+        public ISaveable Saveable { get; private set; }
         public ICommand SaveFileCommand { get; private set; }
 
         private void SaveFile(object parameter)
@@ -65,7 +65,7 @@ namespace TestViewModel.FileContainer
             set
             {
                 SetField(ref _fileName, value);
-                Savable.SaveFile(value);
+                Saveable.SaveFile(value);
             }
         }
 

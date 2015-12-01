@@ -11,7 +11,7 @@ using TestViewModel.Outline;
 
 namespace TestViewModel
 {
-    public sealed class FrameViewModel : INotifyPropertyChanged, ISavable
+    public sealed class FrameViewModel : INotifyPropertyChanged, ISaveable
     {
 
         #region implement INotifyPropertyChanged
